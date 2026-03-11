@@ -277,7 +277,8 @@ struct
       (add_inductive : Names.inductive -> Declarations.mutual_inductive_body -> 'a -> 'a) =
     let rec quote_term (acc : 'a) env sigma trm =
       let aux acc env trm =
-      match Constr.kind trm with
+      match Constr.kind_nonat trm with
+      | Constr.Nat _ -> assert false (* nonat *)
       | Constr.Rel i -> (Q.mkRel (Q.quote_int (i - 1)), acc)
       | Constr.Var v -> (Q.mkVar (Q.quote_ident v), acc)
       | Constr.Evar (n,args) ->

@@ -301,7 +301,9 @@ let unquote_mutual_inductive_entry env evm trm (* of type mutual_inductive_entry
               mind_entry_inds = inds;
               mind_entry_universes = univs;
               mind_entry_variance = variance;
-              mind_entry_private = priv }
+              mind_entry_private = priv;
+              mind_entry_is_nat = false;
+            }
     | _ -> bad_term_verb trm "unquote_mutual_inductive_entry"
   else
     not_supported_verb trm "unquote_mutual_inductive_entry"
